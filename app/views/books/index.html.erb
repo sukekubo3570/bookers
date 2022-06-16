@@ -13,15 +13,15 @@
   </span>
 
   <span>
-    <%= link_to "Show", book_path(book.id) %>
+    <%= link_to "Show", '/book/:id' %>
   </span>
 
   <span>
-    <%= link_to "Edit", edit_book_path(book.id) %>
+    <%= link_to "Edit", 'book/:id/edit' %>
   </span>
 
   <span>
-    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %> %>
+    <%= link_to "Destroy", 'book/:id', method: :delete, "data-confirm" => "本当に削除しますか？" %>
   </span>
 
 <% end %>
