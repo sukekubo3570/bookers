@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     # 3. データをデータベースに保存するためのsaveメソッド実行
     if @book.save
     # 4. トップ画面へリダイレクト
-      redirect_to book_path(book.id)
+      redirect_to book_path(@book.id)
     else
       @books = Book.all
       render :index
