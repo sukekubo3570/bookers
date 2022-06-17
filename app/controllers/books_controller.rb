@@ -11,11 +11,13 @@ class BooksController < ApplicationController
     # 4. トップ画面へリダイレクト
       redirect_to book_path(book.id)
     else
-      render :new
+      @books = Book.all
+      render :index
     end
   end
 
   def index
+    @book = Book.new
     @books = Book.all
   end
 

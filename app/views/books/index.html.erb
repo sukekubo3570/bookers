@@ -13,15 +13,35 @@
   </span>
 
   <span>
-    <%= link_to "Show", '/book/:id' %>
+    <%= link_to "Show", book_path(book.id) %>
   </span>
 
   <span>
-    <%= link_to "Edit", 'book/:id/edit' %>
+    <%= link_to "Edit", edit_book_path(book.id) %>
   </span>
 
   <span>
-    <%= link_to "Destroy", 'book/:id', method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   </span>
 
+<% end %>
+
+<h2>新規投稿</h2>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<!-- form_with部分 -->
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
 <% end %>
