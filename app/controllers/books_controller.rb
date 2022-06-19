@@ -34,8 +34,8 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = 'Book was successfully updated.'
-      redirect_to book_path(book.id)
+       flash[:notice] = 'Book was successfully updated.'
+       redirect_to book_path(@book.id)
     else
       render :edit
     end
@@ -46,6 +46,7 @@ class BooksController < ApplicationController
     if book.destroy  # データ（レコード）を削除
        flash[:notice] = 'Book was successfully destroyed.'
        redirect_to '/books'  # 投稿一覧画面へリダイレクト
+    end
   end
 
 
